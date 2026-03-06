@@ -1,0 +1,89 @@
+<!DOCTYPE html> <html lang="zh-TW"> <head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>許毓庭的個人網站</title> ```
+
+---
+
+### 第二部分：外觀樣式 (CSS)
+
+這部分位於 `<style>` 標籤內，負責定義顏色、字體與排版。
+
+```css
+:root { /* 定義全域變數，方便之後重複使用顏色 */
+    --primary-color: #2c3e50; /* 深藍色 */
+    --accent-color: #3498db;  /* 天藍色 */
+    --bg-color: #f4f7f6;     /* 淺灰色背景 */
+    --text-color: #333;      /* 深灰色文字 */
+}
+
+body {
+    font-family: "Microsoft JhengHei", Arial, sans-serif; /* 設定字體優先順序，首選微軟正黑體 */
+    background-color: var(--bg-color); /* 使用上面定義的背景色 */
+    color: var(--text-color);
+    line-height: 1.6; /* 設定行高，讓文字閱讀起來不擁擠 */
+    margin: 0; /* 清除瀏覽器預設的邊界 */
+    display: flex; /* 使用 Flexbox 排版模型 */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    min-height: 100vh; /* 確保內容至少佔滿整個螢幕高度，讓卡片能置中 */
+}
+
+.card {
+    background: white; /* 卡片底色白色 */
+    width: 90%; /* 在小螢幕時佔 90% 寬度 */
+    max-width: 500px; /* 最大寬度限制在 500 像素，避免在大螢幕變太寬 */
+    padding: 40px; /* 內容與邊框的留白 */
+    border-radius: 15px; /* 圓角效果 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 加上淡淡的陰影，讓卡片有浮起來的感覺 */
+    text-align: center; /* 文字預設置中 */
+}
+
+.profile-header { margin-bottom: 30px; } /* 標頭下方的間距 */
+
+h1 {
+    color: var(--primary-color);
+    margin: 10px 0;
+    letter-spacing: 2px; /* 字距稍微拉開，看起來更精緻 */
+}
+
+.tag {
+    background: var(--accent-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px; /* 膠囊形狀的標籤 */
+    font-size: 0.9em;
+}
+
+.info-section {
+    text-align: left; /* 資訊欄改為靠左對齊 */
+    margin-top: 30px;
+    border-top: 1px solid #eee; /* 上方加一條淡淡的分隔線 */
+    padding-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 12px;
+    display: flex; /* 標籤與內容水平排列 */
+    align-items: center;
+}
+
+.info-label {
+    font-weight: bold; /* 字體加粗 */
+    width: 80px; /* 固定標籤寬度，讓後面的內容可以對齊 */
+    color: var(--accent-color);
+}
+
+.goal-box {
+    background: #eef7fd; /* 淺藍色背景 */
+    padding: 15px;
+    border-left: 5px solid var(--accent-color); /* 左側加粗條 */
+    margin-top: 20px;
+    font-style: italic; /* 斜體字 */
+    border-radius: 4px;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #888; /* 灰色的小字 */
+}
