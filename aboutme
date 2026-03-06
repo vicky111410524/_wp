@@ -1,241 +1,137 @@
 <!DOCTYPE html>
-
-<html lang="zh-TW">
-
+<html lang="zh-Hant">
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>許毓庭的個人網站</title>
-
+    <title>許毓庭的個人主頁</title>
     <style>
-
-        :root {
-
-            --primary-color: #2c3e50;
-
-            --accent-color: #3498db;
-
-            --bg-color: #f4f7f6;
-
-            --text-color: #333;
-
-        }
-
-
-
+        /* 基本樣式設定 */
         body {
-
-            font-family: "Microsoft JhengHei", Arial, sans-serif;
-
-            background-color: var(--bg-color);
-
-            color: var(--text-color);
-
-            line-height: 1.6;
-
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
+            background-color: #f4f7f6;
+            color: #333;
             margin: 0;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             min-height: 100vh;
-
         }
 
-
-
-        .card {
-
-            background: white;
-
-            width: 90%;
-
-            max-width: 500px;
-
-            padding: 40px;
-
-            border-radius: 15px;
-
+        /* 卡片容器 */
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-
+            max-width: 450px;
+            width: 90%;
             text-align: center;
-
+            transition: transform 0.3s ease;
         }
 
-
-
-        .profile-header {
-
-            margin-bottom: 30px;
-
+        .container:hover {
+            transform: translateY(-5px);
         }
 
-
+        /* 大頭貼圖示 */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            background-color: #4a90e2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            margin: 0 auto 1.5rem;
+            font-weight: bold;
+        }
 
         h1 {
-
-            color: var(--primary-color);
-
-            margin: 10px 0;
-
-            letter-spacing: 2px;
-
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
         }
 
-
-
-        .tag {
-
-            background: var(--accent-color);
-
-            color: white;
-
-            padding: 5px 15px;
-
-            border-radius: 20px;
-
-            font-size: 0.9em;
-
-        }
-
-
-
-        .info-section {
-
+        .info-grid {
             text-align: left;
-
-            margin-top: 30px;
-
+            margin: 1.5rem 0;
             border-top: 1px solid #eee;
-
-            padding-top: 20px;
-
+            padding-top: 1rem;
         }
-
-
 
         .info-item {
-
-            margin-bottom: 12px;
-
+            margin: 10px 0;
             display: flex;
-
-            align-items: center;
-
         }
 
-
-
-        .info-label {
-
+        .label {
             font-weight: bold;
-
-            width: 80px;
-
-            color: var(--accent-color);
-
+            color: #4a90e2;
+            width: 85px;
+            flex-shrink: 0;
         }
 
+        .content {
+            color: #555;
+        }
 
-
-        .goal-box {
-
-            background: #eef7fd;
-
+        /* 未來目標區塊 */
+        .goal {
+            background-color: #eef6ff;
             padding: 15px;
-
-            border-left: 5px solid var(--accent-color);
-
-            margin-top: 20px;
-
-            font-style: italic;
-
-            border-radius: 4px;
-
+            border-left: 5px solid #4a90e2;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
-
-
 
         footer {
-
-            margin-top: 30px;
-
-            font-size: 0.8em;
-
-            color: #888;
-
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #aaa;
         }
-
     </style>
-
 </head>
-
 <body>
 
+<div class="container">
+    <div class="profile-img">毓庭</div>
+    <h1>許毓庭</h1>
+    <p style="color: #7f8c8d; margin-top: 0;">國立金門大學 · 資工系</p>
 
-
-    <div class="card">
-
-        <div class="profile-header">
-
-            <span class="tag">Hello World!</span>
-
-            <h1>許毓庭</h1>
-
-            <p>18 歲 | 來自嘉義</p>
-
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="label">年齡：</span>
+            <span class="content">18 歲</span>
         </div>
-
-
-
-        <div class="info-section">
-
-            <div class="info-item">
-
-                <span class="info-label">就讀學校</span>
-
-                <span>國立金門大學</span>
-
-            </div>
-
-            <div class="info-item">
-
-                <span class="info-label">就讀科系</span>
-
-                <span>資訊工程學系 (CSIE)</span>
-
-            </div>
-
-            
-
-            <div class="goal-box">
-
-                <strong>未來目標：</strong><br>
-
-                未來希望能在資工領域發展，也希望能不斷提升自己。
-
-            </div>
-
+        <div class="info-item">
+            <span class="label">家鄉：</span>
+            <span class="content">嘉義</span>
         </div>
-
-
-
-        <footer>
-
-            © 2024 Created by 許毓庭
-
-        </footer>
-
+        <div class="info-item">
+            <span class="label">學校：</span>
+            <span class="content">金門大學</span>
+        </div>
+        <div class="info-item">
+            <span class="label">科系：</span>
+            <span class="content">資訊工程學系</span>
+        </div>
     </div>
 
+    <h3 style="text-align: left; color: #2c3e50;">未來目標</h3>
+    <div class="goal">
+        未來希望能在資工領域發展，也希望能不斷提升自己，掌握最新的技術與挑戰。
+    </div>
 
+    <footer>
+        © 2024 許毓庭 Personal Page
+    </footer>
+</div>
 
 </body>
-
 </html>
+
+
+
