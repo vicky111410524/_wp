@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>許毓庭的個人網站</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .profile-header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .tag {
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .info-section {
+            text-align: left;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-label {
+            font-weight: bold;
+            width: 80px;
+            color: var(--accent-color);
+        }
+
+        .goal-box {
+            background: #eef7fd;
+            padding: 15px;
+            border-left: 5px solid var(--accent-color);
+            margin-top: 20px;
+            font-style: italic;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="profile-header">
+            <span class="tag">Hello World!</span>
+            <h1>許毓庭</h1>
+            <p>18 歲 | 來自嘉義</p>
+        </div>
+
+        <div class="info-section">
+            <div class="info-item">
+                <span class="info-label">就讀學校</span>
+                <span>國立金門大學</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">就讀科系</span>
+                <span>資訊工程學系 (CSIE)</span>
+            </div>
+            
+            <div class="goal-box">
+                <strong>未來目標：</strong><br>
+                未來希望能在資工領域發展，也希望能不斷提升自己。
+            </div>
+        </div>
+
+        <footer>
+            © 2024 Created by 許毓庭
+        </footer>
+    </div>
+
+</body>
+</html>
+https://gemini.google.com/share/df06b4d496ae
