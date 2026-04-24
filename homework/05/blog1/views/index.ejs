@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    h1 { color: #333; }
+    a { text-decoration: none; color: #0066cc; }
+    .post { border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px; }
+    .post h2 { margin-top: 0; }
+    .meta { color: #666; font-size: 0.9em; }
+    .btn { display: inline-block; padding: 8px 15px; background: #0066cc; color: white; border-radius: 3px; }
+    .btn-danger { background: #dc3545; }
+  </style>
+</head>
+<body>
+  <h1><a href="/">My Blog</a></h1>
+  <a href="/new" class="btn">New Post</a>
+  
+  <% posts.forEach(post => { %>
+    <div class="post">
+      <h2><a href="/post/<%= post.id %>"><%= post.title %></a></h2>
+      <p class="meta"><%= new Date(post.created_at).toLocaleString() %></p>
+      <p><%= post.content.substring(0, 150) %>...</p>
+      <a href="/post/<%= post.id %>">Read more</a>
+    </div>
+  <% }); %>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thread by <%= post.username %></title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; min-height: 100vh; }
+    a { text-decoration: none; color: inherit; }
+    
+    .container { display: flex; justify-content: center; }
+    .main { width: 600px; border-right: 1px solid #2e2e2e; min-height: 100vh; }
+    
+    .back { padding: 15px; border-bottom: 1px solid #2e2e2e; cursor: pointer; }
+    .back:hover { background: #0a0a0a; }
+    
+    .post-detail { padding: 20px; border-bottom: 1px solid #2e2e2e; }
+    .post-header { display: flex; gap: 12px; margin-bottom: 15px; }
+    .avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #ff4444, #ff8844); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; }
+    .user-info { display: flex; flex-direction: column; }
+    .username { font-weight: 700; }
+    .time { color: #666; }
+    
+    .content { font-size: 20px; line-height: 1.5; margin: 20px 0; white-space: pre-wrap; }
+    
+    .actions { display: flex; gap: 40px; padding: 15px 0; border-top: 1px solid #2e2e2e; }
+    .action { display: flex; align-items: center; gap: 8px; color: #666; }
+    .action:hover { color: #ff4444; }
+    
+    .delete-form { margin-top: 20px; }
+    .delete-btn { padding: 10px 20px; background: #ff4444; color: #fff; border: none; border-radius: 20px; cursor: pointer; }
+    .delete-btn:hover { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <a href="/" class="back">&larr; Back</a>
+      
+      <div class="post-detail">
+        <div class="post-header">
+          <a href="/user/<%= post.username %>" class="avatar"><%= post.username.charAt(0).toUpperCase() %></a>
+          <div class="user-info">
+            <a href="/user/<%= post.username %>" class="username"><%= post.username %></a>
+            <div class="time"><%= new Date(post.created_at).toLocaleString() %></div>
+          </div>
+        </div>
+        
+        <div class="content"><%= post.content %></div>
+        
+        <div class="actions">
+          <div class="action">&#128276; 0</div>
+          <div class="action">&#128260; 0</div>
+        </div>
+        
+        <% if (user && user.id === post.user_id) { %>
+        <div class="delete-form">
+          <form action="/delete/<%= post.id %>" method="POST" onsubmit="return confirm('Delete this thread?')">
+            <button type="submit" class="delete-btn">Delete</button>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

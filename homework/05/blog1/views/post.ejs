@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= post.title %> - My Blog</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    a { text-decoration: none; color: #0066cc; }
+    .meta { color: #666; font-size: 0.9em; }
+    .content { line-height: 1.6; white-space: pre-wrap; }
+    .btn { display: inline-block; padding: 8px 15px; background: #0066cc; color: white; border-radius: 3px; margin-right: 10px; }
+    .btn-danger { background: #dc3545; }
+  </style>
+</head>
+<body>
+  <a href="/">&larr; Back to Home</a>
+  <h1><%= post.title %></h1>
+  <p class="meta"><%= new Date(post.created_at).toLocaleString() %></p>
+  <div class="content"><%= post.content %></div>
+  <hr>
+  <form action="/delete/<%= post.id %>" method="POST" onsubmit="return confirm('Delete this post?')">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Post - My Blog</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    a { text-decoration: none; color: #0066cc; }
+    input, textarea { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+    textarea { height: 200px; }
+    .btn { display: inline-block; padding: 10px 20px; background: #0066cc; color: white; border: none; border-radius: 3px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <a href="/">&larr; Back to Home</a>
+  <h1>New Post</h1>
+  <form action="/new" method="POST">
+    <label>Title:</label>
+    <input type="text" name="title" required>
+    <label>Content:</label>
+    <textarea name="content" required></textarea>
+    <button type="submit" class="btn">Publish</button>
+  </form>
+</body>
+</html>
