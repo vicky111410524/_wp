@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員問卷調查表</title>
+    <style>
+        /* 全局設定 */
+        body {
+            font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        /* 頂部藍綠色緞帶標題 */
+        .ribbon-wrapper {
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .ribbon {
+            background-color: #35b5a4;
+            color: white;
+            display: inline-block;
+            padding: 15px 80px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .ribbon::before, .ribbon::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            z-index: -1;
+            border: 15px solid #288f81;
+        }
+        .ribbon::before {
+            left: -20px;
+            border-left-color: transparent;
+            border-bottom-color: transparent;
+        }
+        .ribbon::after {
+            right: -20px;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        /* 必填提示 */
+        .required-note {
+            text-align: center;
+            color: #d90000;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* 表單主體外框 (粉色線條) */
+        .form-box {
+            border: 1px solid #fad2d2;
+            padding: 40px 30px 30px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        /* 左上角淡藍色標籤 */
+        .form-tab {
+            position: absolute;
+            top: -16px;
+            left: -1px;
+            background-color: #d7ecf7;
+            color: #555;
+            padding: 6px 15px;
+            border-radius: 10px 10px 0 0;
+            font-size: 14px;
+        }
+
+        /* 表單列與排版 */
+        .form-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            width: 120px;
+            text-align: right;
+            margin-right: 15px;
+            padding-top: 6px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .required-star {
+            color: #d90000;
+            margin-right: 4px;
+        }
+
+        .form-input-group {
+            flex: 1;
+            max-width: 450px;
+        }
+
+        /* 輸入框一般樣式 */
+        input[type="text"], 
+        input[type="email"], 
+        input[type="tel"], 
+        textarea {
+            width: 100%;
+            background-color: #fce8e8;
+            border: 1px solid #b3b3b3;
+            padding: 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* 下拉選單樣式 */
+        select {
+            background-color: #fff;
+            border: 1px solid #7bc1db;
+            padding: 8px;
+            border-radius: 3px;
+            font-size: 14px;
+            margin-right: 5px;
+            outline: none;
+        }
+
+        /* 單選框與複選框排版 */
+        .radio-group, .checkbox-group {
+            padding-top: 6px;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            flex-wrap: wrap; /* 讓選項過多時自動換行 */
+            align-items: center;
+        }
+        .radio-group label, .checkbox-group label {
+            margin-right: 15px;
+            margin-bottom: 8px; /* 增加下方間距避免換行時擠在一起 */
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* 針對「其他」文字框的特別設定 */
+        input.other-text-input {
+            width: 150px; /* 短一點的輸入框 */
+            margin-left: 5px;
+            padding: 4px 8px;
+        }
+        /* 當文字框被停用時的樣式 */
+        input.other-text-input:disabled {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* 底部確認按鈕 */
+        .submit-btn-wrapper {
+            margin-top: 30px;
+            padding-left: 135px;
+        }
+        
+        .submit-btn {
+            background-color: #8cb9e6;
+            color: white;
+            border: none;
+            padding: 8px 24px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #72a3d4;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ribbon-wrapper">
+        <div class="ribbon">會員問卷調查表</div>
+    </div>
+    
+    <div class="required-note">
+        <span class="required-star">*</span> 為必填(選)欄位，不能為空白
+    </div>
+
+    <form action="#" method="POST">
+        <div class="form-box">
+            <div class="form-tab">請填寫您的基本資料與偏好</div>
+
+            <div class="form-row">
+                <div class="form-label"><span class="required-star">*</span> 姓名</div>
+                <div class="form-input-group">
+                    <input type="text" name="name" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label"><span class="required-star">*</span> 電子郵件</div>
+                <div class="form-input-group">
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label"><span class="required-star">*</span> 電話</div>
+                <div class="form-input-group">
+                    <input type="tel" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label"><span class="required-star">*</span> 性別</div>
+                <div class="form-input-group radio-group">
+                    <label><input type="radio" name="gender" value="male" required> 男</label>
+                    <label><input type="radio" name="gender" value="female"> 女</label>
+                    <label><input type="radio" name="gender" value="other"> 其他</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label"><span class="required-star">*</span> 出生日期</div>
+                <div class="form-input-group">
+                    <select id="year" name="year" required>
+                        <option value="">請選擇 年</option>
+                    </select>
+                    <select id="month" name="month" required>
+                        <option value="">請選擇 月</option>
+                    </select>
+                    <select id="day" name="day" required>
+                        <option value="">請選擇 日</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">職業</div>
+                <div class="form-input-group">
+                    <select name="job">
+                        <option value="">請選擇...</option>
+                        <option value="student">學生</option>
+                        <option value="tech">資訊科技</option>
+                        <option value="finance">金融財務</option>
+                        <option value="service">餐飲服務</option>
+                        <option value="education">教育</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">星座</div>
+                <div class="form-input-group">
+                    <select name="zodiac">
+                        <option value="">請選擇...</option>
+                        <option value="aries">牡羊座</option>
+                        <option value="taurus">金牛座</option>
+                        <option value="gemini">雙子座</option>
+                        <option value="cancer">巨蟹座</option>
+                        <option value="leo">獅子座</option>
+                        <option value="virgo">處女座</option>
+                        <option value="libra">天秤座</option>
+                        <option value="scorpio">天蠍座</option>
+                        <option value="sagittarius">射手座</option>
+                        <option value="capricorn">摩羯座</option>
+                        <option value="aquarius">水瓶座</option>
+                        <option value="pisces">雙魚座</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">興趣愛好</div>
+                <div class="form-input-group checkbox-group">
+                    <label><input type="checkbox" name="hobby" value="reading"> 閱讀</label>
+                    <label><input type="checkbox" name="hobby" value="sports"> 運動</label>
+                    <label><input type="checkbox" name="hobby" value="travel"> 旅遊</label>
+                    <label><input type="checkbox" name="hobby" value="music"> 音樂</label>
+                    <label><input type="checkbox" name="hobby" value="movies"> 電影</label>
+                    <label>
+                        <input type="checkbox" name="hobby" value="other" id="hobby-other"> 其他
+                        <input type="text" name="hobby_other_text" id="hobby-other-text" class="other-text-input" placeholder="請說明..." disabled>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">喜歡的顏色</div>
+                <div class="form-input-group">
+                    <input type="text" name="favorite_color" placeholder="例如：藍綠色、粉紅色...">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">個性描述</div>
+                <div class="form-input-group">
+                    <input type="text" name="personality" placeholder="用幾個形容詞描述您的個性">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-label">留言與建議</div>
+                <div class="form-input-group">
+                    <textarea name="message" placeholder="有什麼想對我們說的嗎？"></textarea>
+                </div>
+            </div>
+
+            <div class="submit-btn-wrapper">
+                <button type="submit" class="submit-btn">確認</button>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+<script>
+    // --- 出生日期連動邏輯 ---
+    const yearSelect = document.getElementById('year');
+    const monthSelect = document.getElementById('month');
+    const daySelect = document.getElementById('day');
+
+    const currentYear = new Date().getFullYear();
+    for (let i = currentYear; i >= currentYear - 100; i--) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        yearSelect.appendChild(option);
+    }
+
+    for (let i = 1; i <= 12; i++) {
+        let option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        monthSelect.appendChild(option);
+    }
+
+    function updateDays() {
+        const year = parseInt(yearSelect.value);
+        const month = parseInt(monthSelect.value);
+        
+        daySelect.innerHTML = '<option value="">請選擇 日</option>';
+        
+        if (year && month) {
+            const daysInMonth = new Date(year, month, 0).getDate();
+            for (let i = 1; i <= daysInMonth; i++) {
+                let option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                daySelect.appendChild(option);
+            }
+        }
+    }
+
+    yearSelect.addEventListener('change', updateDays);
+    monthSelect.addEventListener('change', updateDays);
+
+    // --- 興趣愛好「其他」自填框連動邏輯 ---
+    const hobbyOtherCheckbox = document.getElementById('hobby-other');
+    const hobbyOtherTextInput = document.getElementById('hobby-other-text');
+
+    hobbyOtherCheckbox.addEventListener('change', function() {
+        // 如果勾選，取消禁用；如果取消勾選，則禁用
+        hobbyOtherTextInput.disabled = !this.checked;
+        
+        if (this.checked) {
+            hobbyOtherTextInput.focus(); // 自動將游標移入輸入框
+        } else {
+            hobbyOtherTextInput.value = ''; // 取消勾選時清空已輸入的內容
+        }
+    });
+</script>
+
+</body>
+</html>
